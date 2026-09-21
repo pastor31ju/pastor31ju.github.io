@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows无法启动 - 常见错误代码修复指南与系统恢复方案</title>
+    <meta name="description" content="提供Windows无法启动的全面解决方案，包含蓝屏死机、启动循环、自动修复失败等常见问题的排查步骤、错误代码解读及系统恢复工具使用指南。">
+    <meta name="keywords" content="Windows无法启动, Windows蓝屏, 系统修复, 自动修复失败, 系统还原, 重装系统">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0067b8;
+            --primary-hover: #005a9e;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --border-color: #e5e7eb;
+            --code-bg: #f8f9fa;
+            --accent-red: #dc2626;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #0067b8 0%, #4da3ff 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.1s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-decoration: none;
+        }
+
+        /* 主要内容区 */
+        main {
+            padding: 2rem 0;
+        }
+
+        /* 问题诊断区 */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .problem-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.2s;
+        }
+
+        .problem-card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .problem-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 详细解决方案 */
+        .solution-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .solution-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .solution-article {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: 700;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .step-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-window {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            border-left: 4px solid #007acc;
+        }
+
+        .terminal-line {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .terminal-cmd { color: #4ec9b0; }
+        .terminal-path { color: #dcdcaa; }
+        .terminal-arg { color: #ce9178; }
+
+        /* 侧边栏 */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 0.75rem;
+        }
+
+        .error-list {
+            list-style: none;
+        }
+
+        .error-list li {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .error-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .error-list strong {
+            display: block;
+            color: var(--accent-red);
+            margin-bottom: 0.25rem;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            margin-top: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1f2937;
+            color: #9ca3af;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #374151;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                WinFixPro
+            </div>
+            <nav class="nav-links">
+                <a href="#troubleshoot">故障排查</a>
+                <a href="#error-codes">错误代码</a>
+                <a href="#recovery">系统恢复</a>
+                <a href="#faq">常见问题</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Windows无法启动</h1>
+            <p>遇到开机黑屏、蓝屏或无限重启？本指南提供从基础排查到高级系统恢复的完整解决方案，助您快速恢复系统正常运行。</p>
+            <a href="#troubleshoot" class="btn">开始系统修复</a>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 问题诊断 -->
+        <section id="troubleshoot">
+            <h2 class="section-title">常见启动问题诊断</h2>
+            <div class="problem-grid">
+                <article class="problem-card">
+                    <span class="problem-icon">❌</span>
+                    <h3>蓝屏死机 (BSOD)</h3>
+                    <p>屏幕突然变蓝并显示错误信息，通常由驱动程序冲突或硬件故障引起。请记录错误代码以便进一步诊断。</p>
+                </article>
+                <article class="problem-card">
+                    <span class="problem-icon">🔄</span>
+                    <h3>启动循环 / 自动修复</h3>
+                    <p>Windows显示“正在准备自动修复”或“自动修复无法修复你的电脑”，导致无限重启或卡在开机画面。</p>
+                </article>
+                <article class="problem-card">
+                    <span class="problem-icon">🔒</span>
+                    <h3>系统文件损坏</h3>
+                    <p>系统启动时提示“文件损坏”或“丢失的系统文件”，通常由病毒、断电或不正常关机导致。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 详细解决方案 -->
+        <div class="solution-container">
+            <article class="solution-article" id="recovery">
+                <h2 class="section-title">系统恢复操作指南</h2>
+                <p>当Windows无法正常启动时，可以使用内置的恢复环境来修复系统。请按照以下步骤操作：</p>
+                
+                <ul class="step-list">
+                    <li class="step-item">
+                        <div class="step-content">
+                            <h4>1. 进入 Windows 恢复环境</h4>
+                            <p>连续多次强制关机（长按电源键 5-10 秒）直到看到“正在准备自动修复”界面。选择“高级选项”。</p>
+                            <div class="terminal-window">
+                                <span class="terminal-line"><span class="terminal-cmd">启动菜单</span> &gt; <span class="terminal-path">疑难解答</span> &gt; <span class="terminal-path">高级选项</span></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-content">
+                            <h4>2. 使用系统还原 (推荐)</h4>
+                            <p>如果系统在最近发生了故障，系统还原可以将文件和注册表项还原到之前的还原点。</p>
+                            <div class="terminal-window">
+                                <span class="terminal-line"><span class="terminal-cmd">高级选项</span> &gt; <span class="terminal-path">系统还原</span></span>
+                                <span class="terminal-line">> 选择一个还原点 (日期早于故障发生时)</span>
+                                <span class="terminal-line">> 按照向导完成还原</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-content">
+                            <h4>3. 修复启动配置数据 (BCD)</h4>
+                            <p>如果启动菜单丢失或损坏，可以使用此命令重建引导记录。</p>
+                            <div class="terminal-window">
+                                <span class="terminal-line"><span class="terminal-cmd">命令提示符 (管理员)</span></span>
+                                <span class="terminal-line">> diskpart</span>
+                                <span class="terminal-line">> list volume</span>
+                                <span class="terminal-line">> select volume X (X为安装Windows的分区)</span>
+                                <span class="terminal-line">> assign letter=X</span>
+                                <span class="terminal-line">> exit</span>
+                                <span class="terminal-line">> bcdboot C:\Windows /s C: /f UEFI</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-content">
+                            <h4>4. 修复系统文件</h4>
+                            <p>使用 sfc 和 dism 工具扫描并修复损坏的系统文件。</p>
+                            <div class="terminal-window">
+                                <span class="terminal-line">> sfc /scannow /offbootdir=C:\ /offwindir=C:\Windows</span>
+                                <span class="terminal-line">> dism /Image:C:\ /Cleanup-Image /RestoreHealth</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+
+            <aside id="error-codes">
+                <div class="sidebar-card">
+                    <h3>常见错误代码解读</h3>
+                    <ul class="error-list">
+                        <li>
+                            <strong>0x000000ED (UNMOUNTABLE_BOOT_VOLUME)</strong>
+                            无法挂载启动卷。检查硬盘连接线或硬盘本身是否损坏。
+                        </li>
+                        <li>
+                            <strong>0xC000021A (STATUS_SYSTEM_PROCESS_TERMINATED)</strong>
+                            系统关键进程终止。可能是反病毒软件冲突或系统文件被篡改。
+                        </li>
+                        <li>
+                            <strong>0xC0000225 (STATUS_IMAGE_CHECKSUM_MISMATCH)</strong>
+                            驱动程序或系统文件校验和不匹配。建议进入安全模式卸载最近安装的驱动。
+                        </li>
+                        <li>
+                            <strong>0xC1900101 - 0x20017</strong>
+                            更新失败。尝试回滚更新或使用安装介质修复。
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>安全模式</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                        安全模式是Windows启动的最小模式。在此模式下，只加载最基本的驱动程序，有助于排除第三方软件或驱动冲突。
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <strong>进入方法：</strong> 高级选项 &gt; 启动设置 &gt; 重启 &gt; 按 F4 或 4。
+                    </p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- 常见问题 -->
+        <section class="faq-section" id="faq">
+            <h2 class="section-title">常见问题 (FAQ)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">重装系统会删除所有数据吗？</div>
+                <div class="faq-answer">
+                    是的，执行“重装系统”操作会清除C盘（通常是系统盘）中的所有文件和程序。如果在其他分区（如D盘、E盘）有重要数据，请确保在重装前进行备份。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">进入恢复环境需要安装U盘吗？</div>
+                <div class="faq-answer">
+                    如果电脑之前能正常启动并创建过恢复分区，通常不需要U盘。如果无法进入系统，可以制作一个Windows安装U盘来启动电脑，并选择“修复计算机”。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">系统还原点和备份有什么区别？</div>
+                <div class="faq-answer">
+                    系统还原点只还原系统文件和注册表设置，不还原个人文件（如文档、图片）。而备份（如创建系统映像）会保留整个系统的完整状态，包括所有文件。
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>WinFixPro</h4>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">致力于为Windows用户提供专业、可靠的系统故障诊断与修复指南。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">故障排查总览</a></li>
+                        <li><a href="#">驱动程序下载</a></li>
+                        <li><a href="#">BIOS设置指南</a></li>
+                        <li><a href="#">硬件检测工具</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持与帮助</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 WinFixPro. All rights reserved. 本网站内容仅供技术参考。
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
