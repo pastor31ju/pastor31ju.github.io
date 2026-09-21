@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="莫里秀官网提供最新一期节目内容回顾、精彩花絮、嘉宾访谈及节目官方资讯。深入了解莫里秀的节目特色与最新动态。">
+    <meta name="keywords" content="莫里秀,莫里秀官网,莫里秀节目,莫里秀最新,莫里秀访谈">
+    <title>莫里秀-精彩节目回顾与官方资讯平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --primary-hover: #b71c1c;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--text-main);
+        }
+
+        /* Program Grid */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .program-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 180px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(211, 47, 47, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #ffebee;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .feature-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background-color: #fafafa;
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            border-top-color: var(--border-color);
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            max-width: 300px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                padding: 0 15px;
+            }
+
+            nav ul {
+                display: none; /* In a real scenario, JS would toggle this */
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                <span>莫里秀</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#episodes">精彩剧集</a></li>
+                    <li><a href="#features">节目特色</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="https://picsum.photos/seed/variety/1920/600" alt="莫里秀背景" class="hero-bg">
+            <div class="hero-content">
+                <h1>莫里秀</h1>
+                <p>每期聚焦社会热点，用幽默与深度解读生活百态。在这里，发现真实的故事，感受人性的温度。</p>
+                <div class="hero-actions">
+                    <a href="#episodes" class="btn">观看最新一期</a>
+                    <a href="#about" class="btn btn-outline">了解节目</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Episodes -->
+        <section id="episodes" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">精彩节目回顾</h2>
+                    <p class="section-subtitle">精选近期热门话题与嘉宾访谈</p>
+                </div>
+                <div class="program-grid">
+                    <!-- Episode 1 -->
+                    <article class="program-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/variety1/400/300" alt="节目封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">热门话题</span>
+                            <h3 class="card-title">现代职场人的生存现状与心理调适</h3>
+                            <div class="card-meta">
+                                <span>时长：45分钟</span>
+                                <span>更新于 3天前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Episode 2 -->
+                    <article class="program-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/variety2/400/300" alt="节目封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">人物专访</span>
+                            <h3 class="card-title">对话知名建筑师：构建心中的乌托邦</h3>
+                            <div class="card-meta">
+                                <span>时长：52分钟</span>
+                                <span>更新于 1周前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Episode 3 -->
+                    <article class="program-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/variety3/400/300" alt="节目封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">社会观察</span>
+                            <h3 class="card-title">独居生活的利与弊：年轻人的选择</h3>
+                            <div class="card-meta">
+                                <span>时长：48分钟</span>
+                                <span>更新于 2周前</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Episode 4 -->
+                    <article class="program-card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/variety4/400/300" alt="节目封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">亲子教育</span>
+                            <h3 class="card-title">如何与孩子建立有效的沟通桥梁</h3>
+                            <div class="card-meta">
+                                <span>时长：50分钟</span>
+                                <span>更新于 3周前</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="section features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">为什么选择莫里秀</h2>
+                    <p class="section-subtitle">我们致力于提供有深度、有温度的优质内容</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🔍</div>
+                        <h3>深度访谈</h3>
+                        <p>拒绝浅尝辄止，深入挖掘嘉宾背后的故事与观点，还原真实人物。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💡</div>
+                        <h3>观点犀利</h3>
+                        <p>以独特的视角解读社会热点，引发观众思考，传递正向价值观。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🌍</div>
+                        <h3>多元视角</h3>
+                        <p>涵盖职场、教育、情感、科技等多个领域，满足不同受众需求。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title" style="text-align: left;">关于莫里秀</h2>
+                        <p>莫里秀是一档致力于探索人性与社会现象的访谈类节目。自开播以来，我们始终坚持“真实、客观、有温度”的制作理念，邀请各行各业的代表人物，通过轻松自然的对话方式，分享他们的经历、见解与感悟。</p>
+                        <p>我们的目标是成为观众身边的朋友，在快节奏的现代生活中，为大家提供一个可以静下心来思考、交流的平台。无论您是寻找共鸣，还是寻求解答，莫里秀都将是您值得信赖的选择。</p>
+                        <a href="#" class="btn">查看制作团队</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://picsum.photos/seed/studio/600/400" alt="节目演播室">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section" style="background-color: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题</h2>
+                    <p class="section-subtitle">关于节目播放与参与的相关解答</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">莫里秀在哪些平台可以观看？<span>+</span></div>
+                        <div class="faq-answer">目前，莫里秀的所有正片内容均可在本官网首页的“精彩节目回顾”板块进行免费观看。部分独家花絮也将在官网独家发布。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何申请成为节目的嘉宾？<span>+</span></div>
+                        <div class="faq-answer">我们接受各类行业优秀人士的推荐与自荐。请通过官网“联系我们”页面发送您的个人简介及相关资料，我们的编导团队会在收到资料后进行筛选。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">节目更新频率是怎样的？<span>+</span></div>
+                        <div class="faq-answer">莫里秀通常保持每周一更的频率，节假日视情况调整。您可以通过关注我们的官方公众号或订阅本站更新提醒来获取最新动态。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>莫里秀</h2>
+                    <p>探索真实，分享故事。致力于打造最具深度的访谈类节目平台。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">精彩剧集</a></li>
+                        <li><a href="#">嘉宾阵容</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">微博账号</a></li>
+                        <li><a href="#">Bilibili官方</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 莫里秀版权所有. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+                
+                // Close other items (optional, for accordion effect)
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    if (child !== parent) child.classList.remove('active');
+                });
+            });
+        });
+
+        // Mobile Menu Toggle (Basic)
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navUl = document.querySelector('nav ul');
+        
+        menuBtn.addEventListener('click', () => {
+            if (navUl.style.display === 'flex') {
+                navUl.style.display = 'none';
+            } else {
+                navUl.style.display = 'flex';
+                navUl.style.flexDirection = 'column';
+                navUl.style.position = 'absolute';
+                navUl.style.top = '70px';
+                navUl.style.left = '0';
+                navUl.style.width = '100%';
+                navUl.style.background = 'white';
+                navUl.style.padding = '20px';
+                navUl.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
